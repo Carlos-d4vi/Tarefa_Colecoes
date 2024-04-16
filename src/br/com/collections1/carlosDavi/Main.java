@@ -1,5 +1,6 @@
 package br.com.collections1.carlosDavi;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;;
 
@@ -7,25 +8,33 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Solicitação de entrada do usuário
-        System.out.println("Digite as informações separadas por vírgula:");
 
-        // Lê a entrada do usuário
+        String[] pessoas;
+        ArrayList<String> masculino  = new ArrayList<>();
+        ArrayList<String> feminino = new ArrayList<>();
+
+        System.out.println("Digite os nomes: ");
         String input = scanner.nextLine();
+        pessoas = input.split(",");
 
-        // Divide a entrada em partes usando a vírgula como delimitador
-        String[] parts = input.split(",");
-
-        // Ordena as partes em ordem alfabética
-        Arrays.sort(parts);
-
-        // Exibe as informações coletadas ordenadas
-        System.out.println("As informações coletadas em ordem alfabética são:");
-        for (String part : parts) {
-            System.out.println(part.trim()); // trim() remove os espaços em branco extras
+        for (int i = 0; i < pessoas.length; i++) {
+            if (pessoas[i].endsWith("- M")) {
+                masculino.add(pessoas[i]);
+            }else if (pessoas[i].endsWith("- F")) {
+                feminino.add(pessoas[i]);
+            }
         }
 
-        // Fecha o scanner
-        scanner.close();
+        System.out.println("<============ Lista masculinos ============>");
+
+        for (int i = 0; i < masculino.size(); i++) {
+            System.out.println(masculino.get(i).trim());
+        }
+        System.out.println("<============ Lista femininos ============>");
+
+        for (int i = 0; i < feminino.size(); i++) {
+            System.out.println(feminino.get(i).trim());
+        }
+
     }
 }
